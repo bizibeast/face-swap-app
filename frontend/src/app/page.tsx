@@ -63,7 +63,7 @@ const styles = {
   preview: {
     maxWidth: '100%',
     maxHeight: '100%',
-    objectFit: 'contain',
+    objectFit: 'contain' as const,
   },
   button: {
     width: '100%',
@@ -167,7 +167,6 @@ export default function Home() {
       formData.append('face', selectedFace);
       formData.append('video', selectedVideo);
 
-      // Using environment variable for API URL
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
       const response = await fetch(`${apiUrl}/api/swap-face`, {
         method: 'POST',
