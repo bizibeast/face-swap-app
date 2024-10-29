@@ -25,7 +25,7 @@ const styles = {
     padding: '20px',
     borderRadius: '8px',
     border: '1px solid #e1e1e1',
-    height: '350px', // Reduced height since buttons are now outside
+    height: '350px',
   },
   buttonRow: {
     display: 'grid',
@@ -167,7 +167,9 @@ export default function Home() {
       formData.append('face', selectedFace);
       formData.append('video', selectedVideo);
 
-      const response = await fetch('http://localhost:3001/api/swap-face', {
+      // Using environment variable for API URL
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${apiUrl}/api/swap-face`, {
         method: 'POST',
         body: formData,
       });
